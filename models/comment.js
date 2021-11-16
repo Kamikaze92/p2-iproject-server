@@ -49,6 +49,10 @@ module.exports = (sequelize, DataTypes) => {
         },
         notNull: {
           msg: "please input description"
+        },
+        max: {
+          args: [225],
+          msg: "maximal comment is 225 characters"
         }
       }
     },

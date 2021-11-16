@@ -1,22 +1,20 @@
 const express = require("express");
+const cors = require('cors');
+const router = require('./router');
 const app = express();
 const port = 3000
 // const SpotifyWebApi = require("spotify-web-api-ndoe");
 
-// sequelize model:generate --name User --attributes username:string,email:string,password:string
-// sequelize model:generate --name Post --attributes UserId:Integer,descriiption:text
-// sequelize model:generate --name Comment --attributes UserId:Integer,PostId:Integer,descriiption:text
+app.use(express.urlencoded({extended:false}))
+app.use(cors())
+app.use(express.json())
 
-
-
-
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
+app.use(router)
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
 })
+
 // app.post("/login", (req, res, next) => {
 //   const spotifyApi = new SpotifyWebApi({
 //     redirectUri: "http://localhost:3000",
