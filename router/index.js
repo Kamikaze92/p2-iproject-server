@@ -3,10 +3,16 @@ const router = require("express").Router();
 const routerAuthentication = require('./authenticationRoutes')
 const routerThread = require('./threadRoutes.js')
 const routerComment = require('./commentRoutes.js')
-const routeQuote = require('./quoteRoutes.js')
+const routeQuote = require('./quoteRoutes.js');
+const Authenticate = require('../middlewares/authenticate');
 
 // ? router authentication (login,register,login spotify)
 router.use('/authentication', routerAuthentication)
+
+// ? router qoute
+router.use('/quote', routeQuote)
+
+router.use(Authenticate)
 
 // ? router thread
 router.use('/thread', routerThread)
@@ -14,8 +20,6 @@ router.use('/thread', routerThread)
 // ? router comment
 router.use('/comment', routerComment)
 
-// ? router qoute
-router.use('/quote', routeQuote)
 
 
 module.exports = router
