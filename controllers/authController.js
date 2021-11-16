@@ -14,7 +14,6 @@ class AuthController {
         },
       });
       if (!user || !comparePassword(password, user.password)) {
-        //username:fy@gmail.com  password:farhad
         throw { name: "invalid input" };
       } else {
         let tokenUser = { id: user.id, email: user.email, username: user.username };
