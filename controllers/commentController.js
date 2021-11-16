@@ -28,7 +28,25 @@ class CommentController {
   }
   static async getComment(req, res, next) {
     try {
-    } catch (err) {}
+        const {PostId} = req.body
+        const response = await Comment.findAll({
+            where: {
+                PostId
+            },
+            include: [{
+                model: User,
+                attributes: {
+                    exclude: ['password', 'createdAt', 'updatedAt']
+                }
+            }],
+            attributes: {
+                exclude: ['updatedAt']
+            }
+        })
+        res.status(200).json(response)
+    } catch (err) {
+        res.status(500).json(err.message)
+    }
   }
 }
 
