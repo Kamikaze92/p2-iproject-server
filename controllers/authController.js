@@ -8,7 +8,7 @@ class AuthController {
     }
     static async register (req,res,next){
         try {
-            
+
         } catch (err) {
             
         }
