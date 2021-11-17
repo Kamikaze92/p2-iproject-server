@@ -1,5 +1,4 @@
 const router = require("express").Router();
-const SpotifyController = require('../controllers/spotifyController');
 
 const SpotifyWebApi = require("spotify-web-api-node");
 
@@ -54,17 +53,18 @@ const scopes = [
         const access_token = data.body['access_token'];
         const refresh_token = data.body['refresh_token'];
         const expires_in = data.body['expires_in'];
-        console.log(data, "ini data");
+        // console.log(data, "ini data");
   
         spotifyApi.setAccessToken(access_token);
         spotifyApi.setRefreshToken(refresh_token);
   
-        // console.log('access_token:', access_token);
-        // console.log('refresh_token:', refresh_token);
+        console.log('access_token:', access_token);
+        console.log('refresh_token:', refresh_token);
   
         console.log(
           `Sucessfully retreived access token. Expires in ${expires_in} s.`
         );
+        console.log(spotifyApi);
         res.send('Success! You can now close the window.');
   
         setInterval(async () => {
@@ -78,7 +78,7 @@ const scopes = [
       })
       .catch(error => {
         console.error('Error getting Tokens:', error);
-        res.send(`Error getting Tokens: ${error}`);
+        res.redirect(spotifyApi.createAuthorizeURL(scopes));
       });
   });
   
