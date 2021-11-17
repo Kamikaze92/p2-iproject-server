@@ -5,9 +5,13 @@ const routerThread = require('./threadRoutes.js')
 const routerComment = require('./commentRoutes.js')
 const routeQuote = require('./quoteRoutes.js');
 const Authenticate = require('../middlewares/authenticate');
+const routerSpotify = require('./spotifyRoutes')
 
 // ? router authentication (login,register,login spotify)
 router.use('/authentication', routerAuthentication)
+
+// ? router to spotify
+router.use('/spotify', routerSpotify)
 
 // ? router qoute
 router.use('/quote', routeQuote)

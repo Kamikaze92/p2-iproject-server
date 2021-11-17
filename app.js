@@ -6,7 +6,6 @@ const cors = require('cors');
 const router = require('./router');
 const app = express();
 const port = 3000
-// const SpotifyWebApi = require("spotify-web-api-ndoe");
 
 app.use(express.urlencoded({extended:false}))
 app.use(cors())
