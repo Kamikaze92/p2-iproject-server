@@ -1,7 +1,8 @@
 const router = require("express").Router();
 const SpotifyController = require('../controllers/spotifyController');
 
-// router.post('/spotify', SpotifyController)
+const SpotifyWebApi = require("spotify-web-api-node");
+
 const scopes = [
     'ugc-image-upload',
     'user-read-playback-state',
@@ -53,12 +54,13 @@ const scopes = [
         const access_token = data.body['access_token'];
         const refresh_token = data.body['refresh_token'];
         const expires_in = data.body['expires_in'];
+        console.log(data, "ini data");
   
         spotifyApi.setAccessToken(access_token);
         spotifyApi.setRefreshToken(refresh_token);
   
-        console.log('access_token:', access_token);
-        console.log('refresh_token:', refresh_token);
+        // console.log('access_token:', access_token);
+        // console.log('refresh_token:', refresh_token);
   
         console.log(
           `Sucessfully retreived access token. Expires in ${expires_in} s.`
