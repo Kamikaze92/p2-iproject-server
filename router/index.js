@@ -10,13 +10,14 @@ const routerSpotify = require('./spotifyRoutes')
 // ? router authentication (login,register,login spotify)
 router.use('/authentication', routerAuthentication)
 
-// ? router qoute
-router.use('/quote', routeQuote)
 
 // ? router to spotify
 router.use('/spotify', routerSpotify)
 
 router.use(Authenticate)
+
+// ? router qoute
+router.use('/quote', routeQuote)
 
 // ? router thread
 router.use('/thread', routerThread)
