@@ -23,7 +23,6 @@ class SpotifyController {
   }
   static async getPlaylist(req, res, next) {
     try {
-      
       const response = await axios ({
         method: "GET",
         url: "	https://api.spotify.com/v1/playlists/0tT47hAmA5LwIM9wssuNUG",
