@@ -15,6 +15,3 @@
     - inspirational
     - future
     - success
-
-sequelize model:generate --name User --attributes name:string,email:string,password:string,
-sequelize model:generate --name Post --attributes name:string,email:string,password:string,

@@ -3,6 +3,7 @@ const { User } = require("../models");
 
 async function Authenticate(req, res, next) {
   try {
+    console.log("abis dari spotify");
     const { access_token } = req.headers;
     if (!access_token) {
       throw { name: "JsonWebTokenError" };
