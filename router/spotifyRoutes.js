@@ -24,7 +24,7 @@ const router = require("express").Router();
       res.redirect(spotifyApi.createAuthorizeURL(scopes));
     });
     
-    router.get('/callback', (req, res, next) => {
+    router.get('/callback', (req, res) => {
       const error = req.query.error;
       const code = req.query.code;
       const state = req.query.state;
@@ -69,7 +69,7 @@ const router = require("express").Router();
         });
     });
 
-    router.get('/playlist', spotifyApi, SpotifyController.getPlaylist)
+    router.get('/playlist', spotifyApi,SpotifyController.getPlaylist)
 
 
   module.exports = router
