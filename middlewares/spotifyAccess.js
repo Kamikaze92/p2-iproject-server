@@ -1,6 +1,6 @@
 const SpotifyWebApi = require("spotify-web-api-node");
 const fs = require('fs')
-const token = "BQDSfKAV20tK60h3SygKt1-WZXZQ7F2AzffIqhDwJ_i4ieeurdvzxdJ_krhupL6EPykvBkMX90O0YjaN9tLHfwPc0qRnq7X3zjQo1msQYHuntOv31HG-ZyMEPnFM2XTsl4wT-b4bxcP8URQIVsfELqVCd3mMScBgwj5aR58vnGiFt1Q";
+const token = "BQC1v0p1oSmV6sIhtXYbRdBbrWLa-1nbhCoonBl4r-c3jwlwl2hgvgmeNU61ZCQh89WmnUAJkuZRD5P2PqIxrqqgCdmIflL63zCBFCu6wEjS3B_wGlVX4NLkCNTQ71wNiduQFj9s2aedK_Bs8vWRZ32aO1FfemdjV-INPZVH5lInzR8";
 
 const spotifyApi = new SpotifyWebApi();
 spotifyApi.setAccessToken(token);
@@ -10,7 +10,7 @@ function getMyData() {
   (async () => {
     const me = await spotifyApi.getMe();
     console.log(me.body);
-    // getUserPlaylists(me.body.id);
+    getPlaylist();
   })().catch(e => {
     console.error(e);
   });
@@ -19,6 +19,16 @@ function getPlaylist(){
   spotifyApi.getPlaylist('0tT47hAmA5LwIM9wssuNUG')
     .then(function(data) {
       console.log('Some information about this playlist', data.body);
+    }, function(err) {
+      console.log('Something went wrong!', err);
+    });
+}
+
+function getDevices(){
+  spotifyApi.getMyDevices()
+    .then(function(data) {
+      let availableDevices = data.body.devices;
+      console.log(availableDevices);
     }, function(err) {
       console.log('Something went wrong!', err);
     });
@@ -51,5 +61,5 @@ function getPlaylist(){
 // }
 
 getMyData();
-getPlaylist()
+getDevices()
 

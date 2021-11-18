@@ -38,10 +38,11 @@ const router = require("express").Router();
       spotifyApi
         .authorizationCodeGrant(code)
         .then(data => {
-          const access_token = data.body['access_token'];
+          console.log(data);
+          const access_token = `Bearer ${data.body['access_token']}`;
           const refresh_token = data.body['refresh_token'];
           const expires_in = data.body['expires_in'];
-    
+          
           spotifyApi.setAccessToken(access_token);
           spotifyApi.setRefreshToken(refresh_token);
     
@@ -55,7 +56,7 @@ const router = require("express").Router();
     
           setInterval(async () => {
             const data = await spotifyApi.refreshAccessToken();
-            const access_token = data.body['access_token'];
+            const access_token = `Bearer ${data.body['access_token']}`;
     
             console.log('The access token has been refreshed!');
             console.log('access_token:', access_token);
@@ -67,6 +68,8 @@ const router = require("express").Router();
           res.send(`Error getting Tokens: ${error}`);
         });
     });
+
+    router.get('/playlist', spotifyApi, SpotifyController.getPlaylist)
 
 
   module.exports = router
