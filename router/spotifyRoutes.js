@@ -69,7 +69,7 @@ const router = require("express").Router();
         });
     });
 
-    router.get('/playlist', spotifyApi,SpotifyController.getPlaylist)
+    router.get('/playlist', SpotifyController.getPlaylist)
 
 
   module.exports = router
