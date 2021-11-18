@@ -3,7 +3,7 @@ const { User } = require("../models");
 
 async function Authenticate(req, res, next) {
   try {
-    console.log("abis dari spotify");
+    console.log("masuk");
     const { access_token } = req.headers;
     if (!access_token) {
       throw { name: "JsonWebTokenError" };
@@ -19,6 +19,7 @@ async function Authenticate(req, res, next) {
       email: response.email,
       username: response.username,
     };
+    console.log(req.user);
     next();
   } catch (err) {
     console.log(err.name);

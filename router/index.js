@@ -14,7 +14,7 @@ router.use('/authentication', routerAuthentication)
 // ? router to spotify
 router.use('/spotify', routerSpotify)
 
-// router.use(Authenticate)
+router.use(Authenticate)
 
 // ? router qoute
 router.use('/quote', routeQuote)

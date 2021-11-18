@@ -3,7 +3,7 @@ const { Post, User } = require("../models");
 class ThreadController {
   static async createThread(req, res, next) {
     try {
-      const { id } = req.user;
+      console.log(req.user.id);
       const { description } = req.body;
       if (!description) {
         throw { name: "invalid input" };
